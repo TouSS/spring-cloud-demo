@@ -1,0 +1,12 @@
+# Standalone Mode - 单注册中心模式
+server:
+  port: 10006
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    #是否将自己注册到Eureka Server，默认为true,当为单注册中心时,做为注册中心,本服务当然不能注册自己
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

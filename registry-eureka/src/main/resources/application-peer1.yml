@@ -1,0 +1,18 @@
+# 多节点高可用模式 - 节点1
+spring:
+  profiles: peer1
+  application:
+    name: registry
+server:
+  port: 10001
+eureka:
+  server:
+    #enableSelfPreservation: false
+  instance:
+    hostname: peer1
+  client:
+    # 由于application.yml配置单节点模式, 本地运行的时候需要覆盖配置
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/,http://peer3:10003/eureka/

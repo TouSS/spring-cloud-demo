@@ -1,0 +1,34 @@
+spring:
+  profiles: peer1
+  application:
+    name: consumer
+server:
+  port: 30001
+eureka:
+  client:
+    instance:
+      hostname: localhost
+    serviceUrl:
+      # 单注册中心
+      defaultZone: http://localhost:10006/eureka/
+      # 多注册中心
+      # defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/,http://peer3:10003/eureka/
+# Feign配置
+# https://cloud.spring.io/spring-cloud-openfeign/single/spring-cloud-openfeign.html#spring-cloud-feign-overriding-defaults
+feign:
+  hystrix:
+    # 开启Feign熔断
+    enabled: true
+# Hystrix配置
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+# 开起开放接口, 默认有info, health
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream, info, health

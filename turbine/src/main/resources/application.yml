@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: turbine
+server:
+  port: 50006
+
+management:
+  port: 51006
+
+eureka:
+  instance:
+    metadata-map:
+      management.port: ${management.port:51006}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:10006/eureka/
+
+# https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.1.0.RELEASE/single/spring-cloud-netflix.html#_turbine
+turbine:
+  # 需要收集监控信息的服务名, 多个逗号隔开
+  appConfig: consumer
+  # 参数指定了集群名称为default，当我们服务数量非常多的时候，可以启动多个Turbine服务来构建不同的聚合集群，而该参数可以用来区分这些不同的聚合集群，同时该参数值可以在Hystrix仪表盘中用来定位不同的聚合集群，只需要在Hystrix Stream的URL中通过cluster参数来指定
+  # e.g http://my.turbine.server:8080/turbine.stream?cluster=CLUSTERNAME
+  clusterNameExpression: "'default'"
+  # 可以让同一主机上的服务通过主机名与端口号的组合来进行区分，默认情况下会以host来区分不同的服务，这会使得在本地调试的时候，本机上的不同服务聚合成一个服务来统计。
+  combineHostPort: true

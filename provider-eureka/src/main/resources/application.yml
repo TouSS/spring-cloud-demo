@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: provider
+server:
+  port: 20006
+eureka:
+  client:
+    instance:
+      hostname: localhost
+    serviceUrl:
+      # 单注册中心
+      defaultZone: http://localhost:10006/eureka/
+      # 多注册中心
+      # defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/,http://peer3:10003/eureka/
