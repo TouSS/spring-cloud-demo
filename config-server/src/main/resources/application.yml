@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/TouSS/spring-cloud-demo-config
+          # 访问Git仓库的用户名
+          # username: ""
+          # 访问Git仓库的用户密码
+          # password: ""
+server:
+  port: 6006

@@ -2,7 +2,7 @@ spring:
   application:
     name: hystrix-dashboard
 server:
-  port: 40006
+  port: 4006
 
 # For those who are using spring boot 2, the hystrix.stream endpoint has been moved to /actuator/hystrix.stream.
 # http://${host}:${port}/actuator/hystrix.stream

@@ -1,6 +1,6 @@
 # Standalone Mode - 单注册中心模式
 server:
-  port: 10006
+  port: 1006
 eureka:
   instance:
     hostname: localhost

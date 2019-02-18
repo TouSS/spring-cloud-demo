@@ -4,7 +4,7 @@ spring:
   application:
     name: registry
 server:
-  port: 10001
+  port: 1001
 eureka:
   server:
     #enableSelfPreservation: false
@@ -15,4 +15,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://peer1:10001/eureka/,http://peer2:10002/eureka/,http://peer3:10003/eureka/
+      defaultZone: http://peer1:1001/eureka/,http://peer2:1002/eureka/,http://peer3:1003/eureka/
