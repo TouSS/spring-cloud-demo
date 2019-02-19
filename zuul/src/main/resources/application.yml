@@ -19,9 +19,13 @@ eureka:
 #      serviceId: consumer
 
 #zuul:
+#  默认敏感Headers都会被丢弃, 可以设置为false保留
+#  ignoreSecurityHeaders: true
 #  routes:
 #    consumer:
 #      path: /consumer/**
+#  也可选着那些敏感数据不丢弃, sensitiveHeaders: 空列表全部传递
+#      sensitiveHeaders: Cookie,Set-Cookie,Authorization
 #      url: http://example.com/users_service
 
 # 也可serviceId: path 的方式定义
