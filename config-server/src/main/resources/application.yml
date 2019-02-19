@@ -12,3 +12,8 @@ spring:
           # password: ""
 server:
   port: 6006
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1006/eureka/

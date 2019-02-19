@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: zuul
+server:
+  port: 8006
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1006/eureka/
+
+# 配置路由, 默认下zuul会拉取服务列表为服务创建路由 serviceId : serviceId/**
+# https://cloud.spring.io/spring-cloud-static/spring-cloud-netflix/2.1.0.RELEASE/single/spring-cloud-netflix.html#_router_and_filter_zuul
+# 使用path和serviceId或Url
+#zuul:
+#  routes:
+#    consumer:
+#      path: /consumer/**
+#      serviceId: consumer
+
+#zuul:
+#  routes:
+#    consumer:
+#      path: /consumer/**
+#      url: http://example.com/users_service
+
+# 也可serviceId: path 的方式定义
+zuul:
+  # 忽略所有服务, 除开配置路由
+  ignoredServices: '*'
+  # 路由
+  routes:
+    consumer: /consumer/**
+
+  # 不启用过滤器 zuul.<SimpleClassName>.<filterType>.disable=true
+  LogFilter:
+    pre:
+      disable: true
+
